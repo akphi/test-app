@@ -20,7 +20,9 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test:setup": "node ./fixtures/e2e/scripts/setup.js && docker-compose -f ./fixtures/e2e/build/docker-compose.yml -p legend up --detach && node ./fixtures/e2e/scripts/check-ready.js",
+    "test:cleanup": "docker-compose -p legend down",
+    "test": "do nothing",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,6 +45,7 @@
   },
   "devDependencies": {
     "@playwright/test": "1.22.2",
+    "axios": "0.27.2",
     "playwright": "1.22.2"
   }
 }

@@ -57,8 +57,5 @@ getAllFilesInDir(BUILD_DIR).forEach((path) => {
   replaceToken(path, {
     ...config,
     "build.dir": BUILD_DIR,
-    "gitlab.oauth.client-id": process.env.GITLAB_OAUTH_APPLICATION_CLIENT_ID,
-    "gitlab.oauth.secret": process.env.GITLAB_OAUTH_APPLICATION_SECRET,
-    "gitlab.pat": process.env.GITLAB_PAT,
   });
 });
