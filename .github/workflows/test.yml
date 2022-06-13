@@ -37,13 +37,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-        run: echo $GITHUB_TOKEN && node ./scripts/print.js
-      # - name: Install dependencies
+      - name: Install dependencies
+        run: npm install
       #   run: yarn
-      # - name: Build application
-      #   run: npm build
-      - name: Setup test environment
-        run: npm run test:setup
       # - name: Build application
       #   run: yarn build && yarn workspace @finos/legend-studio-deployment bundle
       #   env:
@@ -51,3 +47,9 @@ jobs:
       #     # the upgrade of Webpack/Typescript that we start seeing some OOM when building Webpack
       #     # while publishing to Docker. We should once in a while remove this line and try again.
       #     NODE_OPTIONS: '--max_old_space_size=4096'
+      - name: Setup test environment
+        run: npm run test:setup
+      - name: Run tests
+        run: npm run test
+      - name: Cleanup test environment
+        run: npm run test:cleanup
