@@ -49,5 +49,7 @@ jobs:
       #     NODE_OPTIONS: '--max_old_space_size=4096'
       - name: Setup test environment
         run: npm run test:setup
+      - name: Run tests
+        run: npm run test
       - name: Cleanup test environment
         run: npm run test:cleanup
