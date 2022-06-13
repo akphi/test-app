@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test:setup": "node ./fixtures/e2e/scripts/setup.js && docker-compose -f ./fixtures/e2e/build/docker-compose.yml -p legend up --detach && node ./fixtures/e2e/scripts/check-status.js",
-    "test:cleanup": "docker-compose -p legend down",
+    "test:cleanup": "docker-compose -f ./fixtures/e2e/build/docker-compose.yml -p legend down",
     "test": "playwright test --workers 4"
   },
   "eslintConfig": {
