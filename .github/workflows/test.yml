@@ -37,7 +37,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-        run: echo $GITHUB_TOKEN && node ./scripts/print.js
       # - name: Install dependencies
       #   run: yarn
       # - name: Build application
