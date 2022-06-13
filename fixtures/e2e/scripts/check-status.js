@@ -24,7 +24,7 @@ const isServerReady = async (url) => {
   }
 };
 
-const pollServerReadyStatus = async (url, serviceName) => {
+const pollServerReadyStatus = async (url, serviceUrl, serviceName) => {
   const startTime = Date.now();
   let isReady = false;
   while (!isReady) {
@@ -49,23 +49,17 @@ const pollServerReadyStatus = async (url, serviceName) => {
     }
   }
 
-  console.log(`Service '${serviceName}' is ready!`);
+  console.log(`Service '${serviceName}' is ready! URL: ${serviceUrl}`);
 };
 
 const checkSetupReady = async () => {
+  const engineUrl = `${config["legend.engine.server.host"]}:${config["legend.engine.server.port"]}/api`;
+  const sdlcUrl = `${config["legend.sdlc.server.host"]}:${config["legend.sdlc.server.port"]}/api`;
+  const studioUrl = `${config["legend.studio.server.host"]}:${config["legend.studio.server.port"]}/studio`;
   await Promise.all([
-    pollServerReadyStatus(
-      `${config["legend.engine.server.host"]}:${config["legend.engine.server.port"]}/api/server/v1/info`,
-      "engine"
-    ),
-    pollServerReadyStatus(
-      `${config["legend.sdlc.server.host"]}:${config["legend.sdlc.server.port"]}/api/info`,
-      "sdlc"
-    ),
-    pollServerReadyStatus(
-      `${config["legend.studio.server.host"]}:${config["legend.studio.server.port"]}/studio/config.json`,
-      "studio"
-    ),
+    pollServerReadyStatus(`${engineUrl}/server/v1/info`, engineUrl, "engine"),
+    pollServerReadyStatus(`${sdlcUrl}/info`, sdlcUrl, "sdlc"),
+    pollServerReadyStatus(`${studioUrl}/config.json`, studioUrl, "studio"),
   ]);
 };
 
