@@ -11,7 +11,4 @@
   - [ ] Verify the endpoint `http://localhost:7070/api/sever/info` and `http://localhost:6060/api/server/v1/info` work fine
   - [ ] Start running the test
 - [ ] Setup some tests to run
-  - [ ] Call up
-
-
-
+  - [ ] Call up 2
